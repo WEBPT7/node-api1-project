@@ -3,6 +3,7 @@ const express = require("express");
 const db = require("./data/db.js");
 const server = express();
 server.use(express.json());
+server.use(cors());
 server.get("/", (req, res) => {
   res.send("Hello World");
 });
