@@ -8,39 +8,39 @@ import Users from "./components/Users";
 function App(props) {
   const [list, setList] = useState([]);
 
-  const submitUser = users => {
-    axios
-      .post("http://localhost:5000/api/login", users)
-      .then(rez => {
-        localStorage.setItem("token", rez.data.payload);
-        props.history.push("/users");
-      })
-      .catch(rez => console.error(rez));
-  };
+  // const submitUser = users => {
+  //   axios
+  //     .post("http://localhost:8000/api/users", users)
+  //     .then(rez => {
+  //       localStorage.setItem("token", rez.data.payload);
+  //       props.history.push("/users");
+  //     })
+  //     .catch(rez => console.error(rez));
+  // };
 
   const grabUsers = _ => {
-    axios()
+    axios
       .get("http://localhost:8000/api/users")
-      .then(res => console.log("res", res.data))
+      .then(res => setList(res.data))
       .catch(err => console.error(err));
   };
 
   const addUser = users => {
-    axios()
+    axios
       .post("http://localhost:8000/api/users", users)
       .then(rez => setList(rez.data))
       .catch(err => console.error(err));
   };
 
   const updateUser = users => {
-    axios()
+    axios
       .put(`http://localhost:8000/api/users/${users.id}`, users)
       .then(res => setList(res.data))
       .catch(err => console.error(err));
   };
 
   const delUser = id => {
-    axios()
+    axios
       .delete(`http://localhost:8000/api/users/${id}`)
       .then(rez => setList(rez.data))
       .catch(err => console.error(err));

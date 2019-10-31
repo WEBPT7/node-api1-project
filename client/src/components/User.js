@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const User = props => {
-  const { id, name, bio } = props.user;
+  const { id, name, bio } = props.users;
   const [editing, setEditing] = useState(false);
 
   const [editedUser, setEditedUser] = useState({ name, bio, id });
